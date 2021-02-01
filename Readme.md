@@ -5,7 +5,7 @@ docker image build -t todo-youtube .
 docker image ls
 
 ## Run the docker container
-docker run -p 5001:5000 -d todo-youtube -t
+docker run -p 5001:5000 -d todo-youtube
 
 
 # Postmen collection:
