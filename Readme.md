@@ -1,5 +1,5 @@
 ##  Build the docker image:
-docker-compose up -d
+docker image build -t todo-youtube .
 
 ## Review list of images:
 docker image ls
