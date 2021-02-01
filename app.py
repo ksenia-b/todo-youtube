@@ -8,7 +8,7 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 cors = CORS(app)
 app.config['SECRET_KEY'] = 'thisissecret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/ione/PycharmProjects/todo/todo.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///todo/todo.db'
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 db = SQLAlchemy(app)
