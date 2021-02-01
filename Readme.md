@@ -6,3 +6,7 @@ docker image ls
 
 ## Run the docker container
 docker run -p 5001:5000 -d todo-youtube -t
+
+
+# Postmen collection:
+https://documenter.getpostman.com/view/7422784/TW6zFmuR
