@@ -4,11 +4,17 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_api import status
 import json
 from flask_cors import CORS, cross_origin
+import os
+
 
 app = Flask(__name__)
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'todo.sqlite')
+
 cors = CORS(app)
 app.config['SECRET_KEY'] = 'thisissecret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://///todo/todo.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo/todo.db'
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 db = SQLAlchemy(app)
@@ -91,12 +97,11 @@ def create_user():
 
 @app.route('/task/<id>', methods=['PUT'])
 def update_task(id):
-    data = jsonify(request.get_json())
+    data = request.get_json()
 
-    name = data.args.get('name', None)
-    content = data.args.get('content', None)
-    complete = data.args.get('complete', None)
-    print("name = ", name)
+    name = data.get('name', None)
+    content = data.get('content', None)
+    complete = data.get('complete', None)
     task = Task.query.filter_by(id=id).first()
 
     if not task:
